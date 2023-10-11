@@ -1,9 +1,12 @@
-import express from 'express';
+import { Router } from 'express';
 
-const router = express.Router();
+const authRouter = Router();
 
-router.get('/', (req, res) => {
-  res.json({ hello: 'world' });
+authRouter.get('/signin', async (req, res) => {
+  res.render('Layout', { });
 });
 
-export default router;
+authRouter.get('/signup', async (req, res) => {
+  res.render('Layout', { });
+});
+export default authRouter;
