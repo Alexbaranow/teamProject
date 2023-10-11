@@ -7,6 +7,9 @@ import jsxRender from './utils/jsxRender';
 import indexRouter from './routes/indexRouter';
 import apiRouter from './routes/apiRouter';
 import resLocals from './middlewares/resLocals';
+import apiAuthRouter from './routes/apiAuthRouter';
+import { signInUserMiddleware } from './authMiddlewares/authmiddlewars';
+import authRouter from './routes/apiRouter';
 
 require('dotenv').config();
 
@@ -39,5 +42,7 @@ app.use(resLocals);
 
 app.use('/', indexRouter);
 app.use('/api', apiRouter);
+app.use('/api/auth', apiAuthRouter);
+app.use('/auth', signInUserMiddleware, authRouter);
 
 app.listen(PORT, () => console.log(`App has started on port ${PORT}`));
