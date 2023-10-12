@@ -7,7 +7,9 @@ export default function Authorization({ signInHandler }) {
     <form onSubmit={signInHandler}>
       <h1 className="text-xl-center">Авторизация</h1>
       <div className="mb-3">
-        <label htmlFor="exampleInputEmail1" className="form-label">Адрес электронной почты</label>
+        <label htmlFor="exampleInputEmail1" className="form-label">
+          Адрес электронной почты
+        </label>
         <input
           style={{ color: myInput.includes('@') ? 'black' : 'red' }}
           value={myInput}
@@ -20,10 +22,14 @@ export default function Authorization({ signInHandler }) {
         />
       </div>
       <div className="mb-3">
-        <label htmlFor="exampleInputPassword1" className="form-label">Пароль</label>
+        <label htmlFor="exampleInputPassword1" className="form-label">
+          Пароль
+        </label>
         <input type="password" name="pass" className="form-control" id="exampleInputPassword1" />
       </div>
-      <button type="submit" className="btn btn-primary">Войти</button>
+      <button type="submit" className="btn btn-primary">
+        Войти
+      </button>
       <br />
       <br />
       <a href="/api/auth/signup">Регистрация</a>
