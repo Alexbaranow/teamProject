@@ -7,8 +7,6 @@ import jsxRender from './utils/jsxRender';
 import indexRouter from './routes/indexRouter';
 import resLocals from './middlewares/resLocals';
 import apiAuthRouter from './routes/apiAuthRouter';
-import { signInUserMiddleware } from './authMiddlewares/authmiddlewars';
-import authRouter from './routes/apiRouter';
 import groupsRouter from './routes/groupsRouter';
 import apiGroupsRouter from './routes/apiGroupsRouter';
 
@@ -43,7 +41,6 @@ app.use(resLocals);
 
 app.use('/', indexRouter);
 app.use('/api/auth', apiAuthRouter);
-app.use('/auth', signInUserMiddleware, authRouter);
 app.use('/api/groups', apiGroupsRouter);
 app.use('/groups', groupsRouter);
 

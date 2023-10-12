@@ -4,8 +4,7 @@ export default function useUser() {
   const signUpHandler = (e) => {
     e.preventDefault();
     const userData = Object.fromEntries(new FormData(e.target));
-    console.log(userData);
-    if (!userData.name || !userData.password || !userData.email) return;
+    if (!userData.name || !userData.pass || !userData.email) return;
 
     axios.post('/api/auth/signup', userData)
       .then(() => {
@@ -18,9 +17,9 @@ export default function useUser() {
   const signInHandler = (e) => {
     e.preventDefault();
     const userData = Object.fromEntries(new FormData(e.target));
-    if (!userData.email || !userData.password) return;
+    if (!userData.email || !userData.pass) return;
 
-    axios.post('/api/auth/signin', userData)
+    axios.post('/', userData)
       .then(() => {
         window.location = '/reports';
         e.target.reset();
