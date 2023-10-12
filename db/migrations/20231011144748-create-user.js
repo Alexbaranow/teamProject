@@ -18,12 +18,12 @@ module.exports = {
         type: Sequelize.STRING,
       },
       gId: {
-        type: Sequelize.INTEGER,
         references: {
           model: 'Groups',
           key: 'id',
         },
         onDelete: 'CASCADE',
+        type: Sequelize.INTEGER,
       },
       isAdmin: {
         type: Sequelize.BOOLEAN,
