@@ -10,6 +10,7 @@ import resLocals from './middlewares/resLocals';
 import apiAuthRouter from './routes/apiAuthRouter';
 import { signInUserMiddleware } from './authMiddlewares/authmiddlewars';
 import authRouter from './routes/apiRouter';
+import tableRouter from './routes/tableRouter';
 
 require('dotenv').config();
 
@@ -44,5 +45,6 @@ app.use('/', indexRouter);
 app.use('/api', apiRouter);
 app.use('/api/auth', apiAuthRouter);
 app.use('/auth', signInUserMiddleware, authRouter);
+app.use('/table', tableRouter);
 
 app.listen(PORT, () => console.log(`App has started on port ${PORT}`));
