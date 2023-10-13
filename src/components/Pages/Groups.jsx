@@ -1,10 +1,13 @@
 import React from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 
-export default function Groups({ groups, groupSubmitHandler }) {
+export default function Groups({ user, groups, groupSubmitHandler }) {
   return (
     <Container>
-      <h1> Выбери свою группу: </h1>
+      <br />
+      <h1> Привет, {user.name}!</h1>
+      <br />
+      <h3> Выбери свою группу: </h3>
       <Form onSubmit={groupSubmitHandler}>
         <Form.Select name="select">
           {groups.map((el) => (
@@ -13,7 +16,8 @@ export default function Groups({ groups, groupSubmitHandler }) {
             </option>
           ))}
         </Form.Select>
-        <Button as="input" type="submit" value="Submit" />
+        <br />
+        <Button variant="dark" as="input" type="submit" value="Submit" />
       </Form>
     </Container>
   );

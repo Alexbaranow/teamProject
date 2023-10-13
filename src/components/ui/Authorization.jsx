@@ -27,12 +27,18 @@ export default function Authorization({ signInHandler }) {
         </label>
         <input type="password" name="pass" className="form-control" id="exampleInputPassword1" />
       </div>
-      <button type="submit" className="btn btn-primary">
+      <button
+        style={{ color: 'white', backgroundColor: 'black', border: '0' }}
+        type="submit"
+        className="btn btn-primary"
+      >
         Войти
       </button>
       <br />
       <br />
-      <a href="/api/auth/signup">Регистрация</a>
+      <a style={{ color: 'black', textDecoration: 'none' }} href="/api/auth/signup">
+        Регистрация
+      </a>
     </form>
   );
 }

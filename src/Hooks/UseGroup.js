@@ -7,8 +7,7 @@ export default function useGroup() {
     const formData = Object.fromEntries(new FormData(e.target));
     console.log(formData);
     axios.post('/api/groups', formData)
-      .then((res) => {
-        // INSERT INTO Users (grId) VALUES (res.select)
+      .then(() => {
         window.location = '/reports';
       });
   };

@@ -6,19 +6,20 @@ const apiAuthRouter = Router();
 
 apiAuthRouter.post('/signup', async (req, res) => {
   console.log(req.body);
-  const { name, email, password } = req.body;
-  if (!name || !password || !email) {
-    res.statusCode(400).json({ message: 'all fields required' });
+  const { name, email, pass } = req.body;
+  if (!name || !email || !pass) {
+    res.sendStatus(400).json();
+    // { message: 'all fields required' }
     return;
   } const [user, created] = await User.findOrCreate({
     where: { email },
     defaults: {
       name,
-      password: await bcrypt.hash(password, 10),
+      pass: await bcrypt.hash(pass, 10),
     },
   });
   if (!created) {
-    res.statusCode(400).json({ message: 'email exists' });
+    res.sendStatus(400).json({ message: 'email exists' });
   }
   req.session.user = {
     name: user.name,

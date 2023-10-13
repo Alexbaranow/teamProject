@@ -14,7 +14,7 @@ groupsRouter.get('/', async (req, res) => {
   }
 });
 
-groupsRouter.get('/reports', async (req, res) => {
+groupsRouter.get('/', async (req, res) => {
   res.render('Layout', { });
 });
 

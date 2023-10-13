@@ -1,14 +1,17 @@
 import express from 'express';
-import session from 'express-session';
+import { User } from '../../db/models';
 
 const apiGroupsRouter = express.Router();
 
 apiGroupsRouter.post('/', async (req, res) => {
-  console.log(req.body);
+  const idGroup = req.body.select;
+  const data = req.session.user;
 
-    console.log(session);
+  await User.update(
+    { gId: idGroup, isAdmin: false },
+    { where: { id: data.id } },
+  );
   res.sendStatus(200);
 });
-
 
 export default apiGroupsRouter;

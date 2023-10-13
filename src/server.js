@@ -9,6 +9,8 @@ import resLocals from './middlewares/resLocals';
 import apiAuthRouter from './routes/apiAuthRouter';
 import groupsRouter from './routes/groupsRouter';
 import apiGroupsRouter from './routes/apiGroupsRouter';
+import reportsRouter from './routes/reportsRouter';
+import authRouter from './routes/authRouter';
 
 require('dotenv').config();
 
@@ -40,8 +42,11 @@ app.use(session(sessionConfig));
 app.use(resLocals);
 
 app.use('/', indexRouter);
+app.use('/auth', authRouter);
 app.use('/api/auth', apiAuthRouter);
 app.use('/api/groups', apiGroupsRouter);
 app.use('/groups', groupsRouter);
+app.use('/reports', reportsRouter);
+
 
 app.listen(PORT, () => console.log(`App has started on port ${PORT}`));
