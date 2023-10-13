@@ -6,19 +6,20 @@ const apiAuthRouter = Router();
 
 apiAuthRouter.post('/signup', async (req, res) => {
   console.log(req.body);
-  const { name, email, password } = req.body;
-  if (!name || !password || !email) {
-    res.statusCode(400).json({ message: 'all fields required' });
+  const { name, email, pass } = req.body;
+  if (!name || !email || !pass) {
+    res.sendStatus(400).json();
+    // { message: 'all fields required' }
     return;
   } const [user, created] = await User.findOrCreate({
     where: { email },
     defaults: {
       name,
-      password: await bcrypt.hash(password, 10),
+      pass: await bcrypt.hash(pass, 10),
     },
   });
   if (!created) {
-    res.statusCode(400).json({ message: 'email exists' });
+    res.sendStatus(400).json({ message: 'email exists' });
   }
   req.session.user = {
     name: user.name,
@@ -29,9 +30,9 @@ apiAuthRouter.post('/signup', async (req, res) => {
 });
 
 apiAuthRouter.post('/signin', async (req, res) => {
-  const { email, password } = req.body;
-  if (!email || !password) {
-    res.status(400).json({ message: 'all fields required' });
+  const { email, pass } = req.body;
+  if (!email || !pass) {
+    res.status(400).json({ message: 'Заполните все поля!' });
     return;
   }
 
@@ -41,7 +42,7 @@ apiAuthRouter.post('/signin', async (req, res) => {
     },
   });
 
-  if (!user || !await bcrypt.compare(password, user.password)) {
+  if (!user || !await bcrypt.compare(pass, user.pass)) {
     res.status(400).json({ message: 'user not found' });
     return;
   }

@@ -1,7 +1,9 @@
 import express from 'express';
 
-const router = express.Router();
+const indexRouter = express.Router();
 
+indexRouter.get('/', (req, res) => {
+  const initState = {};
 router.get('/', (req, res) => {
   const State = 'privet';
   const initState = { State };
@@ -18,4 +20,4 @@ router.get('/table', (req, res) => {
   res.render('Layout', initState);
 });
 
-export default router;
+export default indexRouter;
