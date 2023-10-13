@@ -1,7 +1,6 @@
 import React from 'react';
 
 export default function Registration(props) {
-  console.log(props);
   return (
     <form>
       <h1 className="text-xl-center">Регистрация</h1>

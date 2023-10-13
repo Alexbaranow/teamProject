@@ -11,7 +11,6 @@ import groupsRouter from './routes/groupsRouter';
 import apiGroupsRouter from './routes/apiGroupsRouter';
 import reportsRouter from './routes/reportsRouter';
 import authRouter from './routes/authRouter';
-import tableRouter from './routes/tableRouter';
 
 require('dotenv').config();
 
@@ -48,6 +47,5 @@ app.use('/api/auth', apiAuthRouter);
 app.use('/api/groups', apiGroupsRouter);
 app.use('/groups', groupsRouter);
 app.use('/reports', reportsRouter);
-
 
 app.listen(PORT, () => console.log(`App has started on port ${PORT}`));

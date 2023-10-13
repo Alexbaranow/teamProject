@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 
-function TableComponent({ element, section, commit }) {
+function TableComponent({ names, upgrades, changes }) {
   const cellStyle = {
     wordBreak: 'break-word',
     border: '1px solid #000',
     padding: '10px',
-    flexWrap: 'wrap', // Используйте "flexWrap" с заглавной буквой "W"
+    flexWrap: 'wrap',
     textAlign: 'left',
-    width: '430px', // Фиксированная ширина
-    maxHeight: '150px', // Максимальная высота для ограничения размера
-    overflowY: 'auto', // Включаем вертикальную прокрутку, если текст не умещается
-    overflowWrap: 'break-word', // Включаем автоматический перенос строк
+    width: '430px',
+    maxHeight: '150px',
+    overflowY: 'auto',
+    overflowWrap: 'break-word',
   };
 
   const tableStyle = {
@@ -31,9 +31,9 @@ function TableComponent({ element, section, commit }) {
     margin: '20px',
   };
 
-  const [tableData, setTableData] = useState(element);
-  const [tableDataTwo, setTableDataTwo] = useState(section);
-  const [tableDataThree, setTableDataThree] = useState(commit);
+  const [tableData, setTableData] = useState(names);
+  const [tableDataTwo, setTableDataTwo] = useState(upgrades);
+  const [tableDataThree, setTableDataThree] = useState(changes);
 
   const handleCellChange = (column, index, newValue) => {
     if (column === 1) {
@@ -56,22 +56,6 @@ function TableComponent({ element, section, commit }) {
       const updatedTableData = [...tableData];
       updatedTableData.splice(index, 1);
       setTableData(updatedTableData);
-      fetch(`/api/deleteElement/${elementId}`, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
-        .then((response) => {
-          if (response.status === 200) {
-            // Обработка успешного удаления
-          } else {
-            // Обработка ошибки удаления
-          }
-        })
-        .catch((error) => {
-          // Обработка ошибки сети
-        });
     } else if (column === 2) {
       const updatedTableData = [...tableDataTwo];
       updatedTableData.splice(index, 1);
@@ -103,10 +87,12 @@ function TableComponent({ element, section, commit }) {
                 {tableData.map((el, index) => (
                   <div key={index}>
                     <div style={cellStyle}>
+                      <input title="fefefefe" />
+                      <button>Добавить</button>
+                      <button onClick={() => deleteCell(1, index)}>Удалить</button>
                       <div contentEditable onBlur={(e) => handleCellChange(1, index, e.currentTarget.innerText)}>
                         {el}
                       </div>
-                      <button onClick={() => deleteCell(1, index)}>Удалить</button>
                     </div>
                   </div>
                 ))}
@@ -118,10 +104,12 @@ function TableComponent({ element, section, commit }) {
                 {tableDataTwo.map((el, index) => (
                   <div key={index}>
                     <div style={cellStyle}>
+                      <input title="fefefefe" />
+                      <button>Добавить</button>
+                      <button onClick={() => deleteCell(2, index)}>Удалить</button>
                       <div contentEditable onBlur={(e) => handleCellChange(2, index, e.currentTarget.innerText)}>
                         {el}
                       </div>
-                      <button onClick={() => deleteCell(2, index)}>Удалить</button>
                     </div>
                   </div>
                 ))}
@@ -133,10 +121,12 @@ function TableComponent({ element, section, commit }) {
                 {tableDataThree.map((el, index) => (
                   <div key={index}>
                     <div style={cellStyle}>
+                      <input title="fefefefe" />
+                      <button>Добавить</button>
+                      <button onClick={() => deleteCell(3, index)}>Удалить</button>
                       <div contentEditable onBlur={(e) => handleCellChange(3, index, e.currentTarget.innerText)}>
                         {el}
                       </div>
-                      <button onClick={() => deleteCell(3, index)}>Удалить</button>
                     </div>
                   </div>
                 ))}

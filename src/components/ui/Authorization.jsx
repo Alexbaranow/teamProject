@@ -6,7 +6,6 @@ export default function Authorization({ signInHandler }) {
   return (
     <form onSubmit={signInHandler}>
       <h1 className="text-xl-center">Авторизация</h1>
-      {myPROPOPS}
       <div className="mb-3">
         <label htmlFor="exampleInputEmail1" className="form-label">
           Адрес электронной почты

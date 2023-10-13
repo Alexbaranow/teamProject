@@ -6,27 +6,19 @@ import useUser from '../Hooks/UseUser';
 import useGroup from '../Hooks/UseGroup';
 import Groups from './Pages/Groups';
 import Reports from './Pages/Reports';
-
-export default function App({ user, groups }) {
-  const { signInHandler, signUpHandler } = useUser();
-  const [comments, setComments] = useState([{ id: 1 }, { id: 2 }, { id: 3 }]);
-  // const deleteHandler = () => {
-  //   setComments([]);
-  // };
-  const { groupSubmitHandler } = useGroup();
 import TableComponent from './ui/TableComponent';
 
 export default function App({
-  State, names, section, commit,
+  names, upgrades, changes, user, groups,
 }) {
-  console.log('State', State);
-  console.log('names', names);
+  const { signInHandler, signUpHandler } = useUser();
+  const [comments, setComments] = useState([{ id: 1 }, { id: 2 }, { id: 3 }]);
+  const { groupSubmitHandler } = useGroup();
 
-  // const { signInHandler, signUpHandler } = useUser(user);
   return (
     <div className="container">
       <Routes>
-        <Route path="/auth/signin" element={<Authorization signInHandler={signInHandler} />} />
+        <Route path="/" element={<Authorization signInHandler={signInHandler} />} />
         <Route path="/auth/signup" element={<Registration signUpHandler={signUpHandler} />} />
         <Route
           path="/groups"
@@ -35,6 +27,7 @@ export default function App({
           }
         />
         <Route path="/reports" element={<Reports />} />
+        <Route path="/table" element={<TableComponent names={names} upgrades={upgrades} changes={changes} />} />
       </Routes>
     </div>
   );
