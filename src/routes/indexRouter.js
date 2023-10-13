@@ -1,10 +1,40 @@
 import express from 'express';
+import { Section, Upgrade, Change } from '../../db/models';
 
-const router = express.Router();
+const indexRouter = express.Router();
 
-router.get('/', (req, res) => {
-  const initState = { hello: 'world' };
-  res.render('Layout', initState);
+indexRouter.get('/table', async (req, res) => {
+  try {
+    const sections = await Section.findAll();
+    const upgrades = await Upgrade.findAll({
+      attributes: ['desc'],
+      group: ['desc'],
+      raw: true,
+    });
+
+    // Извлекаем все уникальные значения столбца 'desc' из модели Change
+    const changes = await Change.findAll({
+      attributes: ['desc'],
+      group: ['desc'],
+      raw: true,
+    });
+
+    // console.log(sections, 'UPGRADES:', upgrades, 'CHANGES:', changes);
+
+    const names = sections.map((section) => JSON.stringify(section.name));
+
+    const initState = {
+      hello: 'world',
+      names,
+      upgrades,
+      changes,
+    };
+
+    res.render('Layout', initState);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Внутренняя ошибка сервера' });
+  }
 });
 
-export default router;
+export default indexRouter;

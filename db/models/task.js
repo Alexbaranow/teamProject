@@ -12,8 +12,8 @@ module.exports = (sequelize, DataTypes) => {
     static associate({
       Group, Section, Upgrade, Change,
     }) {
-      this.belongsTo(Group, { foreingKey: 'gId' });
-      this.belongsTo(Section, { foreingKey: 'sId' });
+      this.belongsTo(Group, { foreignKey: 'gId' });
+      this.belongsTo(Section, { foreignKey: 'sId' });
       this.hasMany(Change, { foreignKey: 'tId' });
       this.hasMany(Upgrade, { foreignKey: 'tId' });
     }
