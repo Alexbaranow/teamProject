@@ -11,9 +11,6 @@ export default function useGroup() {
         window.location = '/reports';
       });
   };
-  // function onChange(token) {
-  //   console.log(`Token: ${token}`);
-  // }
 
   return {
     groupSubmitHandler,

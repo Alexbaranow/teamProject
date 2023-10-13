@@ -1,8 +1,9 @@
 import React from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
-// import { ReCAPTCHA } from 'react-google-recaptcha';
+import { ReCAPTCHA } from 'react-google-recaptcha';
 
 export default function Groups({ user, groups, groupSubmitHandler }) {
+  const onChange = () => {};
   return (
     <Container>
       <br />
@@ -20,8 +21,7 @@ export default function Groups({ user, groups, groupSubmitHandler }) {
         <br />
         <Button variant="dark" as="input" type="submit" value="Submit" />
       </Form>
-      {/* <br /> */}
-      {/* <ReCAPTCHA sitekey="6LcL5pooAAAAAJy5l0fnxAyEjxLjmhCkcE5cA-Jn" onChange={onChange} /> */}
+      <ReCAPTCHA sitekey="6LcL5pooAAAAAJy5l0fnxAyEjxLjmhCkcE5cA-Jn" onChange={onChange} />
     </Container>
   );
 }
