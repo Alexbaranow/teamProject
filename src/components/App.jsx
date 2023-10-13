@@ -13,12 +13,12 @@ export default function App({ user, groups }) {
   // const deleteHandler = () => {
   //   setComments([]);
   // };
-  const { groupSubmitHandler, formData } = useGroup();
+  const { groupSubmitHandler } = useGroup();
   return (
     <div className="container">
       <Routes>
-        <Route path="/" element={<Authorization signInHandler={signInHandler} />} />
-        <Route path="/api/auth/signup" element={<Registration signUpHandler={signUpHandler} />} />
+        <Route path="/auth/signin" element={<Authorization signInHandler={signInHandler} />} />
+        <Route path="/auth/signup" element={<Registration signUpHandler={signUpHandler} />} />
         <Route
           path="/groups"
           element={

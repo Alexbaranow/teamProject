@@ -20,12 +20,12 @@ export default function Registration({ signUpHandler }) {
         <label htmlFor="exampleInputPassword1" className="form-label">Повторите пароль</label>
         <input type="password" className="form-control" id="exampleInputPassword1" />
       </div>
-      <button type="submit" className="btn btn-primary">
+      <button style={{ color: 'white', backgroundColor: 'black', border: '0' }} type="submit" className="btn btn-primary">
         Зарегистрироваться
       </button>
       <br />
       <br />
-      <a href="/">Авторизация</a>
+      <a style={{ color: 'black', textDecoration: 'none' }} href="/auth/signin">Авторизация</a>
     </form>
   );
 }

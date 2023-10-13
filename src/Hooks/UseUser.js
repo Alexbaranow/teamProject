@@ -19,7 +19,7 @@ export default function useUser() {
     const userData = Object.fromEntries(new FormData(e.target));
     if (!userData.email || !userData.pass) return;
 
-    axios.post('/', userData)
+    axios.post('/api/auth/signin', userData)
       .then(() => {
         window.location = '/reports';
         e.target.reset();

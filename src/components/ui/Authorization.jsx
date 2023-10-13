@@ -36,7 +36,7 @@ export default function Authorization({ signInHandler }) {
       </button>
       <br />
       <br />
-      <a style={{ color: 'black', textDecoration: 'none' }} href="/api/auth/signup">
+      <a style={{ color: 'black', textDecoration: 'none' }} href="/auth/signup">
         Регистрация
       </a>
     </form>

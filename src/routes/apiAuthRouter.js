@@ -30,9 +30,9 @@ apiAuthRouter.post('/signup', async (req, res) => {
 });
 
 apiAuthRouter.post('/signin', async (req, res) => {
-  const { email, password } = req.body;
-  if (!email || !password) {
-    res.status(400).json({ message: 'all fields required' });
+  const { email, pass } = req.body;
+  if (!email || !pass) {
+    res.status(400).json({ message: 'Заполните все поля!' });
     return;
   }
 
@@ -42,7 +42,7 @@ apiAuthRouter.post('/signin', async (req, res) => {
     },
   });
 
-  if (!user || !await bcrypt.compare(password, user.password)) {
+  if (!user || !await bcrypt.compare(pass, user.pass)) {
     res.status(400).json({ message: 'user not found' });
     return;
   }
