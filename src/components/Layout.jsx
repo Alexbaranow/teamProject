@@ -20,8 +20,17 @@ export default function Layout({ initState }) {
         <script defer src="/vendor.js" />
         <title>Document</title>
       </head>
-      <body>
-        <div id="root">
+      <body style={{
+        backgroundImage: 'url("/img/IMG_5206.JPG")',
+        backgroundSize: '120%',
+        backgroundRepeat: 'no-repeat',
+        fontFamily: 'Arial, sans-serif',
+      }}
+      >
+
+        <div
+          id="root"
+        >
           <StaticRouter location={initState.path}>
             <App {...initState} />
           </StaticRouter>

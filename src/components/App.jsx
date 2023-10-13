@@ -7,10 +7,10 @@ import TableComponent from './ui/TableComponent';
 
 export default function App() {
   const { signInHandler, signUpHandler } = useUser();
-  const [comments, setComments] = useState([{id:1}, {id:2}, {id:3}])
+  const [comments, setComments] = useState([{ id: 1 }, { id: 2 }, { id: 3 }]);
   const deleteHandler = () => {
-    setComments([]) 
-  }
+    setComments([]);
+  };
   return (
     <div className="container">
       <Routes>
