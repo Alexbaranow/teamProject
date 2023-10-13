@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Navbar, Nav } from 'react-bootstrap';
+import { Container, Navbar, Nav, Form, InputGroup } from 'react-bootstrap';
 
 export default function Reports() {
   return (
@@ -13,6 +13,14 @@ export default function Reports() {
             <Nav.Link href="/">LogOut</Nav.Link>
           </Nav>
         </Navbar.Collapse>
+      </Container>
+      <Container>
+        <InputGroup className="mb-3">
+          <InputGroup.Text>Секции</InputGroup.Text>
+          <Form.Control aria-label="First name" />
+          <Form.Control aria-label="Last name" />
+          <Form.Control aria-label="Third name" />
+        </InputGroup>
       </Container>
     </Navbar>
   );

@@ -11,6 +11,8 @@ import groupsRouter from './routes/groupsRouter';
 import apiGroupsRouter from './routes/apiGroupsRouter';
 import reportsRouter from './routes/reportsRouter';
 import authRouter from './routes/authRouter';
+import authCheck from './middlewares/authCheck';
+import adminCheck from './middlewares/adminCheck';
 
 require('dotenv').config();
 
@@ -45,8 +47,8 @@ app.use('/', indexRouter);
 app.use('/auth', authRouter);
 app.use('/api/auth', apiAuthRouter);
 app.use('/api/groups', apiGroupsRouter);
-app.use('/groups', groupsRouter);
+app.use('/groups', authCheck(true), groupsRouter);
 app.use('/reports', reportsRouter);
-
+// adminCheck(true),
 
 app.listen(PORT, () => console.log(`App has started on port ${PORT}`));

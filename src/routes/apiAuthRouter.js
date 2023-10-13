@@ -54,4 +54,9 @@ apiAuthRouter.post('/signin', async (req, res) => {
   res.sendStatus(200);
 });
 
+// apiAuthRouter.get('/logout', (req, res) => {
+//   req.session.destroy();
+//   res.clearCookie('test');
+//   res.sendStatus(200);
+// });
 export default apiAuthRouter;

@@ -9,7 +9,7 @@ import Reports from './Pages/Reports';
 
 export default function App({ user, groups }) {
   const { signInHandler, signUpHandler } = useUser();
-  const [comments, setComments] = useState([{ id: 1 }, { id: 2 }, { id: 3 }]);
+  // const [comments, setComments] = useState([{ id: 1 }, { id: 2 }, { id: 3 }]);
   // const deleteHandler = () => {
   //   setComments([]);
   // };
@@ -21,9 +21,13 @@ export default function App({ user, groups }) {
         <Route path="/auth/signup" element={<Registration signUpHandler={signUpHandler} />} />
         <Route
           path="/groups"
-          element={
-            <Groups user={user} groups={groups} groupSubmitHandler={groupSubmitHandler} />
-          }
+          element={(
+            <Groups
+              user={user}
+              groups={groups}
+              groupSubmitHandler={groupSubmitHandler}
+            />
+          )}
         />
         <Route path="/reports" element={<Reports />} />
       </Routes>
