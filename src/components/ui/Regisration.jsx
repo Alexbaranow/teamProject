@@ -1,8 +1,9 @@
 import React from 'react';
 
-export default function Registration({ signUpHandler }) {
+export default function Registration(props) {
+  console.log(props);
   return (
-    <form onSubmit={signUpHandler}>
+    <form>
       <h1 className="text-xl-center">Регистрация</h1>
       <div className="mb-3">
         <label htmlFor="exampleInputEmail1" className="form-label">Адрес электронной почты</label>
@@ -16,9 +17,10 @@ export default function Registration({ signUpHandler }) {
         <label htmlFor="exampleInputPassword1" className="form-label">Повторите пароль</label>
         <input type="password" name="password" className="form-control" id="exampleInputPassword1" />
       </div>
-      <button type="submit" className="btn btn-primary">Зарегистрироваться</button> 
-      <br/><br/>
-      <a href='/'>Авторизация</a>
+      <button type="submit" className="btn btn-primary">Зарегистрироваться</button>
+      <br />
+      <br />
+      <a href="/">Авторизация</a>
     </form>
   );
 }
