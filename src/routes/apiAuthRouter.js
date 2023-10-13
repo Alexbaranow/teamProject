@@ -6,19 +6,19 @@ const apiAuthRouter = Router();
 
 apiAuthRouter.post('/signup', async (req, res) => {
   console.log(req.body);
-  const { name, email, password } = req.body;
-  if (!name || !password || !email) {
-    res.statusCode(400).json({ message: 'all fields required' });
+  const { name, email, pass } = req.body;
+  if (!name || !pass || !email) {
+    res.statusCode(400).json({ message: 'все поля обязательны к заполнению' });
     return;
   } const [user, created] = await User.findOrCreate({
     where: { email },
     defaults: {
       name,
-      password: await bcrypt.hash(password, 10),
+      pass: await bcrypt.hash(pass, 10),
     },
   });
   if (!created) {
-    res.statusCode(400).json({ message: 'email exists' });
+    res.statusCode(400).json({ message: 'такой email уже зарегистрирован' });
   }
   req.session.user = {
     name: user.name,
@@ -28,29 +28,9 @@ apiAuthRouter.post('/signup', async (req, res) => {
   res.sendStatus(200);
 });
 
-apiAuthRouter.post('/signin', async (req, res) => {
-  const { email, password } = req.body;
-  if (!email || !password) {
-    res.status(400).json({ message: 'all fields required' });
-    return;
-  }
-
-  const user = await User.findOne({
-    where: {
-      email,
-    },
+apiAuthRouter.get('/signup', (req, res) => {
+    const initState = {};
+    res.render('Layout', initState);
   });
-
-  if (!user || !await bcrypt.compare(password, user.password)) {
-    res.status(400).json({ message: 'user not found' });
-    return;
-  }
-  req.session.user = {
-    name: user.name,
-    email: user.email,
-    id: user.id,
-  };
-  res.sendStatus(200);
-});
 
 export default apiAuthRouter;

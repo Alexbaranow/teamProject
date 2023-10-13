@@ -4,19 +4,16 @@ module.exports = {
     await queryInterface.bulkInsert('Sections', [
       {
         name: 'MainPage',
-        gId: 1,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
         name: 'Login',
-        gId: 1,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
         name: 'Network',
-        gId: 2,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
