@@ -8,7 +8,7 @@ export default function useUser() {
 
     axios.post('/api/auth/signup', userData)
       .then(() => {
-        window.location = '/';
+        window.location = '/groups';
         e.target.reset();
       })
       .catch((err) => console.log(err));
@@ -29,5 +29,5 @@ export default function useUser() {
   return {
     signInHandler,
     signUpHandler,
-  };
+    };
 }
