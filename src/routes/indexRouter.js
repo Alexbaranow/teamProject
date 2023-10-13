@@ -7,4 +7,9 @@ router.get('/', (req, res) => {
   res.render('Layout', initState);
 });
 
+router.get('/table', (req, res) => {
+  const name = ['name1', 'name2', 'name3'];
+  const initState = { hello: 'world', name };
+  res.render('Layout', initState);
+});
 export default router;

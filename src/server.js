@@ -10,6 +10,7 @@ import resLocals from './middlewares/resLocals';
 import apiAuthRouter from './routes/apiAuthRouter';
 import { signInUserMiddleware } from './authMiddlewares/authmiddlewars';
 import authRouter from './routes/apiRouter';
+import tableRouter from './routes/tableRouter';
 
 require('dotenv').config();
 
